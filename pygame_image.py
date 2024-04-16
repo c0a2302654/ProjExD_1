@@ -17,17 +17,22 @@ def main():
     kk_rct.center = 300, 200 #練習8-2
     tmr = 0
     while True:
+        x = 0
+        y = 0
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip([0, -1])
+            y -= 1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip([0, +1])
+            y += 1
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip([-1, 0])
+            x -= 1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip([+1, 0])
+            x += 2
+        else:
+            x -= 1
+        kk_rct.move_ip([x, y])
 
         x = tmr%3200 
         screen.blit(bg_img, [-x, 0]) #練習6
